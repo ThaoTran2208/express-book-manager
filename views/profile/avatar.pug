@@ -1,0 +1,21 @@
+extends ../layouts/common
+block content
+  .container-fluid.bg
+    .container.profile
+      .row
+        .col-12
+          h2.mb-3 Upload Avatar
+
+        .col-12.col-md-3.avatar
+          if(!user.avatar)
+            img(src= user.defaultAvatar)
+          img(src= user.avatar)
+          
+        .col-12.col-md-9.personal-info
+          .row
+            .col-12.col-md-8.content
+              form(action= "/profile/avatar", method= 'POST', enctype="multipart/form-data")
+                .form-group
+                  label(for='avatar') Avatar
+                  input#avatar.form-control-file(type='file', name='avatar')
+                button.btn.btn-primary(type='submit') Save
